@@ -1,5 +1,5 @@
-import { SignInForm } from "./sign-in-form"
-import { SignUpForm } from "./sign-up-form"
+import { SignInForm } from "./sign-in-form/sign-in-form"
+import { SignUpForm } from "./sign-up-form/sign-up-form"
 
 export const Authentication = () => {
   return (
