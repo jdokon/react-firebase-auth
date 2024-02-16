@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import HomePage from "./components/home-page"
-import { Authentication } from "./components/authentication"
+import { Authentication } from "./components/authentication/authentication"
 
 function App() {
   return (
