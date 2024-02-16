@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import React, { useContext, useState } from "react"
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase-utils"
 import { FormInput } from "../form-input/form-input"
-import "./sign-up-form.styles.scss" 
+import "./sign-up-form.styles.scss"
+import { UserContext } from "../../contexts/user.context"
 
 const defaultFormFields = {
   displayName: "",
@@ -15,7 +15,8 @@ const defaultFormFields = {
 }
 
 export const SignUpForm = () => {
-  let navigate = useNavigate()
+  //let navigate = useNavigate()
+  const { setCurrentUser } = useContext(UserContext)
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { displayName, email, password, confirmPassword } = formFields
 
@@ -38,6 +39,7 @@ export const SignUpForm = () => {
 
     try {
       const { user } = await createAuthUserWithEmailAndPassword(email, password)
+      setCurrentUser(user)
       await createUserDocumentFromAuth(user, { displayName })
       resetFormFields()
     } catch (error) {

@@ -4,13 +4,11 @@ import { Authentication } from "./components/authentication/authentication"
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/auth" element={<Authentication />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/" element={<Authentication />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/auth" element={<Authentication />} />
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/" element={<Authentication />} />
+    </Routes>
   )
 }
 

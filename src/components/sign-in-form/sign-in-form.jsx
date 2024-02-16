@@ -1,5 +1,4 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import React, { useContext, useState } from "react"
 import {
   createUserDocumentFromAuth,
   signInWithGooglePopup,
@@ -7,6 +6,7 @@ import {
 } from "../../utils/firebase-utils"
 import { FormInput } from "../form-input/form-input"
 import "./sign-in-form.styles.scss"
+import { UserContext } from "../../contexts/user.context"
 
 const defaultFormFields = {
   email: "",
@@ -14,7 +14,8 @@ const defaultFormFields = {
 }
 
 export const SignInForm = () => {
-  let navigate = useNavigate()
+  //let navigate = useNavigate()
+  const { setCurrentUser } = useContext(UserContext)
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { email, password } = formFields
 
@@ -30,11 +31,10 @@ export const SignInForm = () => {
   const signIn = async (e) => {
     e.preventDefault()
     try {
-      const response = await signInAuthWithEmailAndPassword(email, password)
-      console.log(response)
+      const { user } = await signInAuthWithEmailAndPassword(email, password)
+      setCurrentUser(user)
       resetFormFields()
     } catch (error) {
-      console.log(error.code)
       switch (error.code) {
         case "auth/invalid-credential":
           alert("Incorrect email or password")
@@ -48,6 +48,7 @@ export const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup()
+    setCurrentUser(user)
     await createUserDocumentFromAuth(user)
     console.log(user)
   }
