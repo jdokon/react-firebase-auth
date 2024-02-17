@@ -6,12 +6,7 @@ import { UserContext } from "../../contexts/user.context"
 import { signOutUser } from "../../utils/firebase-utils"
 
 export const Authentication = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext)
-
-  const signOutHandler = async () => {
-    const resp = await signOutUser()
-    setCurrentUser(null)
-  }
+  const { currentUser } = useContext(UserContext)
 
   return (
     <>
@@ -21,7 +16,7 @@ export const Authentication = () => {
       </div>
 
       {currentUser ? (
-        <button onClick={signOutHandler}>SIGN OUT</button>
+        <button onClick={signOutUser}>SIGN OUT</button>
       ) : (
         <h1>USER NOT LOGGED IN</h1>
       )}
