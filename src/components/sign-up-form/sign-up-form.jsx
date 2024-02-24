@@ -6,6 +6,14 @@ import {
 import { FormInput } from "../form-input/form-input"
 import "./sign-up-form.styles.scss"
 import { UserContext } from "../../contexts/user.context"
+import {
+  Box,
+  Button,
+  Container,
+  CssBaseline,
+  TextField,
+  Typography,
+} from "@mui/material"
 
 const defaultFormFields = {
   displayName: "",
@@ -52,46 +60,71 @@ export const SignUpForm = () => {
   }
 
   return (
-    <div className="sign-up-container">
-      <h2>Create Account</h2>
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          label="Display Name"
-          type="text"
-          name="displayName"
-          placeholder="Username"
-          required
-          value={displayName}
-          onChange={handleChange}
-        />
-        <FormInput
-          label="Email"
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleChange}
-        />
-        <FormInput
-          label="Password"
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={handleChange}
-        />
-        <FormInput
-          label="Confirm Password"
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          required
-          value={confirmPassword}
-          onChange={handleChange}
-        />
-        <button type="submit">SIGN UP</button>
-      </form>
-    </div>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography component="h1" variant="h5">
+          Create Account
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            label="Display Name"
+            type="text"
+            name="displayName"
+            autoFocus
+            value={displayName}
+            onChange={handleChange}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            label="Email"
+            name="email"
+            autoComplete="email"
+            value={email}
+            onChange={handleChange}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            value={password}
+            onChange={handleChange}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="confirmPassword"
+            label="Confirm Password"
+            type="password"
+            value={confirmPassword}
+            onChange={handleChange}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            SIGN UP
+          </Button>
+        </Box>
+      </Box>
+    </Container>
   )
 }

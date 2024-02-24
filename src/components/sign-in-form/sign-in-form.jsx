@@ -5,6 +5,8 @@ import {
 } from "../../utils/firebase-utils"
 import { FormInput } from "../form-input/form-input"
 import "./sign-in-form.styles.scss"
+import TextField from "@mui/material/TextField"
+import { Box, Button, Container, CssBaseline, Typography } from "@mui/material"
 
 const defaultFormFields = {
   email: "",
@@ -47,37 +49,63 @@ export const SignInForm = () => {
   }
 
   return (
-    <div className="sign-in-container">
-      <h2>Sign In</h2>
-      <form onSubmit={handleSubmit}>
-        <FormInput
-          label="Email"
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleChange}
-        />
-        <FormInput
-          label="Password"
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={handleChange}
-        />
-        <div className="buttons-container">
-          <button type="submit">SIGN IN</button>
-          <button
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            value={email}
+            onChange={handleChange}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={handleChange}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            SIGN IN
+          </Button>
+          <Button
             type="button"
-            className="google-sign-in"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
             onClick={signInWithGoogle}
           >
             SIGN IN WITH GOOGLE
-          </button>
-        </div>
-      </form>
-    </div>
+          </Button>
+        </Box>
+      </Box>
+    </Container>
   )
 }
