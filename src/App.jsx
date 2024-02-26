@@ -8,6 +8,7 @@ import {
 } from "./utils/firebase-utils"
 import { setCurrentUser } from "./store/user/user.action"
 import { useDispatch } from "react-redux"
+import { Navigation } from "./routes/navigation/navigation"
 
 function App() {
   const dispatch = useDispatch()
@@ -25,9 +26,9 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/" element={<Navigation />} />
       <Route path="/auth" element={<Authentication />} />
       <Route path="/home" element={<HomePage />} />
-      <Route path="/" element={<Authentication />} />
     </Routes>
   )
 }
