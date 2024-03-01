@@ -6,10 +6,16 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material"
-import { Link, Outlet } from "react-router-dom"
+import { Link, Navigate, Outlet, useNavigate } from "react-router-dom"
 // import MenuIcon from "@mui/icons-material/Menu"
 
 export const Navigation = () => {
+  const navigate = useNavigate()
+
+  const handleSignIn = () => {
+    navigate("/signin")
+  }
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -27,9 +33,10 @@ export const Navigation = () => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Sign In / Sign Up Demo
             </Typography>
-            <Link to="/signin" color="inherit">
-              <Button color="inherit">Sign In</Button>
-            </Link>
+
+            <Button color="inherit" onClick={handleSignIn}>
+              Sign In
+            </Button>
             {/* <button onClick={signOutUser}>SIGN OUT</button> */}
           </Toolbar>
         </AppBar>
