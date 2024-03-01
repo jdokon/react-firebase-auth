@@ -6,7 +6,15 @@ import {
 import { FormInput } from "../form-input/form-input"
 import "./sign-in-form.styles.scss"
 import TextField from "@mui/material/TextField"
-import { Box, Button, Container, CssBaseline, Typography } from "@mui/material"
+import {
+  Box,
+  Button,
+  Container,
+  CssBaseline,
+  Grid,
+  Link,
+  Typography,
+} from "@mui/material"
 
 const defaultFormFields = {
   email: "",
@@ -95,6 +103,19 @@ export const SignInForm = () => {
           >
             SIGN IN
           </Button>
+          <Grid container>
+            {/* <Grid item xs>
+              <Link href="#" variant="body2">
+                Forgot password?
+              </Link>
+            </Grid> */}
+            <Grid item>
+              {"New here? "}
+              <Link href="/signup" variant="body2">
+                Sign Up
+              </Link>
+            </Grid>
+          </Grid>
           <Button
             type="button"
             fullWidth
