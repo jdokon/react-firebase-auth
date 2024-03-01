@@ -15,12 +15,6 @@ export const Authentication = () => {
         <SignInForm />
         <SignUpForm />
       </div>
-
-      {currentUser ? (
-        <button onClick={signOutUser}>SIGN OUT</button>
-      ) : (
-        <h1>USER NOT LOGGED IN</h1>
-      )}
     </>
   )
 }

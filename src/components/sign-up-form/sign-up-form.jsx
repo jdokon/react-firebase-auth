@@ -55,8 +55,6 @@ export const SignUpForm = () => {
         console.log("user creation encountered an error", error)
       }
     }
-
-    //navigate("/home")
   }
 
   return (

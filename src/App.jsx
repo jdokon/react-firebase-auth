@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import HomePage from "./components/home-page"
 import { Authentication } from "./components/authentication/authentication"
 import { useEffect } from "react"
 import {
@@ -9,6 +8,9 @@ import {
 import { setCurrentUser } from "./store/user/user.action"
 import { useDispatch } from "react-redux"
 import { Navigation } from "./routes/navigation/navigation"
+import HomePage from "./routes/home/home-page"
+import { SignInForm } from "./components/sign-in-form/sign-in-form"
+import { SignUpForm } from "./components/sign-up-form/sign-up-form"
 
 function App() {
   const dispatch = useDispatch()
@@ -26,9 +28,12 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigation />} />
-      <Route path="/auth" element={<Authentication />} />
-      <Route path="/home" element={<HomePage />} />
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<HomePage />} />
+        <Route path="/signin" element={<SignInForm />} />
+        <Route path="/signup" element={<SignUpForm />} />
+        {/* <Route path="/auth" element={<Authentication />} /> */}
+      </Route>
     </Routes>
   )
 }
