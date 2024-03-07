@@ -14,6 +14,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 
 const defaultFormFields = {
   displayName: "",
@@ -23,7 +24,7 @@ const defaultFormFields = {
 }
 
 export const SignUpForm = () => {
-  //let navigate = useNavigate()
+  let navigate = useNavigate()
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { displayName, email, password, confirmPassword } = formFields
 
@@ -48,6 +49,7 @@ export const SignUpForm = () => {
       const { user } = await createAuthUserWithEmailAndPassword(email, password)
       await createUserDocumentFromAuth(user, { displayName })
       resetFormFields()
+      navigate("/")
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         console.log("Cannot create user, email already in use")
@@ -80,6 +82,7 @@ export const SignUpForm = () => {
             type="text"
             name="displayName"
             autoFocus
+            autoComplete="off"
             value={displayName}
             onChange={handleChange}
           />
@@ -89,7 +92,7 @@ export const SignUpForm = () => {
             fullWidth
             label="Email"
             name="email"
-            autoComplete="email"
+            autoComplete="off"
             value={email}
             onChange={handleChange}
           />

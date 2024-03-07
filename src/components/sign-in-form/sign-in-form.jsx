@@ -15,6 +15,7 @@ import {
   Link,
   Typography,
 } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 
 const defaultFormFields = {
   email: "",
@@ -22,7 +23,7 @@ const defaultFormFields = {
 }
 
 export const SignInForm = () => {
-  //let navigate = useNavigate()
+  let navigate = useNavigate()
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { email, password } = formFields
 
@@ -40,6 +41,7 @@ export const SignInForm = () => {
     try {
       const { user } = await signInAuthWithEmailAndPassword(email, password)
       resetFormFields()
+      navigate("/")
     } catch (error) {
       switch (error.code) {
         case "auth/invalid-credential":
@@ -54,6 +56,7 @@ export const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     await signInWithGooglePopup()
+    navigate("/")
   }
 
   return (
@@ -78,7 +81,6 @@ export const SignInForm = () => {
             id="email"
             label="Email"
             name="email"
-            autoComplete="email"
             autoFocus
             value={email}
             onChange={handleChange}

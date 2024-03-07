@@ -6,7 +6,9 @@ const HomePage = () => {
   return (
     <div>
       {currentUser ? (
-        <button onClick={signOutUser}>SIGN OUT</button>
+        <div>
+          <h2>Welcome</h2>
+        </div>
       ) : (
         <h1>Please Sign In</h1>
       )}

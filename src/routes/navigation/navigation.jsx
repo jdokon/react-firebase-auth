@@ -6,13 +6,20 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material"
+import { useSelector } from "react-redux"
 import { Link, Navigate, Outlet, useNavigate } from "react-router-dom"
-// import MenuIcon from "@mui/icons-material/Menu"
+import { signOutUser } from "../../utils/firebase-utils"
 
 export const Navigation = () => {
   const navigate = useNavigate()
+  const currentUser = useSelector((state) => state.user.currentUser)
 
   const handleSignIn = () => {
+    navigate("/signin")
+  }
+
+  const handleSignOut = () => {
+    signOutUser()
     navigate("/signin")
   }
 
@@ -34,10 +41,15 @@ export const Navigation = () => {
               Sign In / Sign Up Demo
             </Typography>
 
-            <Button color="inherit" onClick={handleSignIn}>
-              Sign In
-            </Button>
-            {/* <button onClick={signOutUser}>SIGN OUT</button> */}
+            {currentUser ? (
+              <Button color="inherit" onClick={handleSignOut}>
+                Sign Out
+              </Button>
+            ) : (
+              <Button color="inherit" onClick={handleSignIn}>
+                Sign In
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
       </Box>
