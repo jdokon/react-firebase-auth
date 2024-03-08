@@ -63,12 +63,17 @@ export const SignInForm = () => {
           alignItems: "center",
         }}
       >
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" sx={{ marginBottom: "10px" }}>
           Sign in to your account
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ mt: 1, marginTop: "10px" }}
+        >
           <SignInLogoButtons />
-          <Divider>Or</Divider>
+          <Divider sx={{ marginTop: "10px", marginBottom: "10px" }}>or</Divider>
           <TextField
             margin="normal"
             required
@@ -101,16 +106,14 @@ export const SignInForm = () => {
             SIGN IN
           </Button>
           <Grid container>
-            {/* <Grid item xs>
+            <Grid item xs>
               <Link href="#" variant="body2">
                 Forgot password?
               </Link>
-            </Grid> */}
+            </Grid>
             <Grid item>
               {"New here? "}
-              <Link href="/signup" variant="body2">
-                Sign Up
-              </Link>
+              <Link href="/signup">Sign up</Link>
             </Grid>
           </Grid>
         </Box>

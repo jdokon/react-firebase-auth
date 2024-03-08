@@ -11,10 +11,14 @@ import {
   Button,
   Container,
   CssBaseline,
+  Grid,
   TextField,
   Typography,
+  Link,
+  Divider,
 } from "@mui/material"
 import { useNavigate } from "react-router-dom"
+import { SignInLogoButtons } from "../sign-in-form/sign-in-logo-buttons"
 
 const defaultFormFields = {
   displayName: "",
@@ -62,6 +66,7 @@ export const SignUpForm = () => {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+
       <Box
         sx={{
           marginTop: 8,
@@ -70,15 +75,29 @@ export const SignUpForm = () => {
           alignItems: "center",
         }}
       >
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" sx={{ marginBottom: "10px" }}>
           Create Account
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Typography
+          variant="subtitle2"
+          align="center"
+          sx={{ marginBottom: "10px" }}
+        >
+          Use one of the existing accounts below, or start from the beginning.
+        </Typography>
+        <SignInLogoButtons />
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ mt: 1, marginTop: "10px" }}
+        >
+          <Divider sx={{ marginBottom: "10px" }}>or</Divider>
           <TextField
             margin="normal"
             required
             fullWidth
-            label="Display Name"
+            label="Username"
             type="text"
             name="displayName"
             autoFocus
@@ -124,6 +143,10 @@ export const SignUpForm = () => {
           >
             SIGN UP
           </Button>
+          <Grid item textAlign="center">
+            {"Already have an account? "}
+            <Link href="/signin">Sign in</Link>
+          </Grid>
         </Box>
       </Box>
     </Container>
