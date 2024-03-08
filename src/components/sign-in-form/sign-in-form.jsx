@@ -1,9 +1,5 @@
 import React, { useState } from "react"
-import {
-  signInWithGooglePopup,
-  signInAuthWithEmailAndPassword,
-} from "../../utils/firebase-utils"
-import { FormInput } from "../form-input/form-input"
+import { signInAuthWithEmailAndPassword } from "../../utils/firebase-utils"
 import "./sign-in-form.styles.scss"
 import TextField from "@mui/material/TextField"
 import {
@@ -11,11 +7,13 @@ import {
   Button,
   Container,
   CssBaseline,
+  Divider,
   Grid,
   Link,
   Typography,
 } from "@mui/material"
 import { useNavigate } from "react-router-dom"
+import { SignInLogoButtons } from "./sign-in-logo-buttons"
 
 const defaultFormFields = {
   email: "",
@@ -54,11 +52,6 @@ export const SignInForm = () => {
     }
   }
 
-  const signInWithGoogle = async () => {
-    await signInWithGooglePopup()
-    navigate("/")
-  }
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -71,9 +64,11 @@ export const SignInForm = () => {
         }}
       >
         <Typography component="h1" variant="h5">
-          Sign in
+          Sign in to your account
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <SignInLogoButtons />
+          <Divider>Or</Divider>
           <TextField
             margin="normal"
             required
@@ -118,15 +113,6 @@ export const SignInForm = () => {
               </Link>
             </Grid>
           </Grid>
-          <Button
-            type="button"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            onClick={signInWithGoogle}
-          >
-            SIGN IN WITH GOOGLE
-          </Button>
         </Box>
       </Box>
     </Container>
