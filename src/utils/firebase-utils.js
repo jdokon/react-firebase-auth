@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  sendPasswordResetEmail,
 } from "firebase/auth"
 
 const firebaseConfig = {
@@ -68,6 +69,12 @@ export const signInAuthWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return
 
   return await signInWithEmailAndPassword(auth, email, password)
+}
+
+export const sendEmailForPasswordReset = async (email) => {
+  if (!email) return
+
+  return await sendPasswordResetEmail(auth, email)
 }
 
 export const signOutUser = async () => await signOut(auth)

@@ -105,11 +105,9 @@ export const SignInForm = () => {
           >
             SIGN IN
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
+          <Grid container justifyContent="space-between">
+            <Grid item>
+              <Link href="/forgotpassword">Forgot password?</Link>
             </Grid>
             <Grid item>
               {"New here? "}

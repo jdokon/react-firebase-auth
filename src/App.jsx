@@ -11,6 +11,7 @@ import { Navigation } from "./routes/navigation/navigation"
 import HomePage from "./routes/home/home-page"
 import { SignInForm } from "./components/sign-in-form/sign-in-form"
 import { SignUpForm } from "./components/sign-up-form/sign-up-form"
+import { ForgotPassword } from "./components/forgot-password/forgot-password"
 
 function App() {
   const dispatch = useDispatch()
@@ -32,6 +33,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="/signin" element={<SignInForm />} />
         <Route path="/signup" element={<SignUpForm />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
         {/* <Route path="/auth" element={<Authentication />} /> */}
       </Route>
     </Routes>
