@@ -12,13 +12,13 @@ import {
 } from "firebase/auth"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDFD8o4km_VVMvesbAlNPzj3e8wXk8Ji9k",
-  authDomain: "nights-of-halloween.firebaseapp.com",
-  projectId: "nights-of-halloween",
-  storageBucket: "nights-of-halloween.appspot.com",
-  messagingSenderId: "229750966956",
-  appId: "1:229750966956:web:3fe77a16dff3e96efb2d09",
-  measurementId: "G-C15E232HH7",
+  apiKey: import.meta.env.VITE_APP_API_KEY,
+  authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_APP_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_APP_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_APP_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_APP_ID,
+  measurementId: import.meta.env.VITE_APP_MEASUREMENT_ID,
 }
 
 const firebaseapp = initializeApp(firebaseConfig)
