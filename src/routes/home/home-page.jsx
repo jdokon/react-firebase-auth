@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux"
-import { signOutUser } from "../../utils/firebase-utils"
 
 const HomePage = () => {
   const currentUser = useSelector((state) => state.user.currentUser)

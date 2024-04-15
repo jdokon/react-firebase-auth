@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { Authentication } from "./components/authentication/authentication"
 import { useEffect } from "react"
 import {
   createUserDocumentFromAuth,
@@ -34,7 +33,6 @@ function App() {
         <Route path="/signin" element={<SignInForm />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
-        {/* <Route path="/auth" element={<Authentication />} /> */}
       </Route>
     </Routes>
   )

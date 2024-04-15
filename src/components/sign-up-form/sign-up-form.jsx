@@ -3,9 +3,7 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase-utils"
-import { FormInput } from "../form-input/form-input"
 import "./sign-up-form.styles.scss"
-import { UserContext } from "../../contexts/user.context"
 import {
   Box,
   Button,

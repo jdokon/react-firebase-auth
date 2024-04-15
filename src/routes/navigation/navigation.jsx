@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material"
 import { useSelector } from "react-redux"
-import { Link, Navigate, Outlet, useNavigate } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import { signOutUser } from "../../utils/firebase-utils"
 
 export const Navigation = () => {
@@ -35,7 +35,6 @@ export const Navigation = () => {
               aria-label="menu"
               sx={{ mr: 2 }}
             >
-              {/* <MenuIcon /> */}
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Sign In / Sign Up Demo
