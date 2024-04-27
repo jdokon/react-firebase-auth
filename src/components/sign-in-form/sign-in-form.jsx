@@ -35,6 +35,10 @@ export const SignInForm = () => {
   }
 
   const handleSubmit = async (e) => {
+    if (email === "" || password === "") {
+      alert("Please enter your email and password to sign in.")
+      return
+    }
     e.preventDefault()
     try {
       const { user } = await signInAuthWithEmailAndPassword(email, password)
@@ -43,10 +47,13 @@ export const SignInForm = () => {
     } catch (error) {
       switch (error.code) {
         case "auth/invalid-credential":
-          alert("Incorrect email or password")
+          alert("Incorrect email or password.")
+          break
+        case "auth/invalid-email":
+          alert("Please enter a valid email address.")
           break
         default:
-          alert("An unexpected error occurred")
+          alert("An unexpected error occurred: " + error.code)
           break
       }
     }

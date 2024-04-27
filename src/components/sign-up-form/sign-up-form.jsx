@@ -13,7 +13,7 @@ import {
   TextField,
   Typography,
   Link,
-  Divider,
+  Divider
 } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { SignInLogoButtons } from "../sign-in-form/sign-in-logo-buttons"
