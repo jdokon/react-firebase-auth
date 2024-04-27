@@ -1,4 +1,12 @@
-import { Box, Button, Container, TextField, Typography } from "@mui/material"
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  TextField,
+  Typography,
+  Link,
+} from "@mui/material"
 import { useState } from "react"
 import { sendEmailForPasswordReset } from "../../utils/firebase-utils"
 
@@ -69,8 +77,12 @@ export const ForgotPassword = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            RESET PASSWORD
+            SEND RESET EMAIL
           </Button>
+          <Grid item textAlign="center">
+            {"Back to "}
+            <Link href="/signin">Sign in</Link>
+          </Grid>
         </Box>
       </Box>
     </Container>
