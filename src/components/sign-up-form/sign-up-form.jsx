@@ -13,7 +13,7 @@ import {
   TextField,
   Typography,
   Link,
-  Divider
+  Divider,
 } from "@mui/material"
 import { useNavigate } from "react-router-dom"
 import { SignInLogoButtons } from "../sign-in-form/sign-in-logo-buttons"
@@ -42,6 +42,15 @@ export const SignUpForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    if (
+      [displayName, email, password, confirmPassword].some(
+        (field) => field === ""
+      )
+    ) {
+      alert("Please fill out all required fields.")
+      return
+    }
+
     if (password !== confirmPassword) {
       alert("Passwords do not match")
       return
@@ -53,10 +62,19 @@ export const SignUpForm = () => {
       resetFormFields()
       navigate("/")
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        console.log("Cannot create user, email already in use")
-      } else {
-        console.log("user creation encountered an error", error)
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          alert("This email is already registered. Please use a different one.")
+          break
+        case "auth/invalid-email":
+          alert("Please enter a valid email address.")
+          break
+        case "auth/weak-password":
+          alert("Invalid password")
+          break
+        default:
+          alert("user creation encountered an error: " + error)
+          break
       }
     }
   }
