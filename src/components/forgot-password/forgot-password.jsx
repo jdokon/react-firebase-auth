@@ -6,6 +6,7 @@ import {
   TextField,
   Typography,
   Link,
+  CssBaseline,
 } from "@mui/material"
 import { useState } from "react"
 import { sendEmailForPasswordReset } from "../../utils/firebase-utils"
@@ -35,6 +36,7 @@ export const ForgotPassword = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <CssBaseline />
       <Box
         sx={{
           marginTop: 8,
